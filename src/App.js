@@ -3,13 +3,6 @@ import "./App.css";
 import Features from "./components/Features";
 import Summary from "./components/Summary";
 
-// This object will allow us to
-// easily convert numbers into US dollar values
-const USCurrencyFormat = new Intl.NumberFormat("en-US", {
-  style: "currency",
-  currency: "USD",
-});
-
 class App extends Component {
   state = {
     selected: {
@@ -40,7 +33,7 @@ class App extends Component {
     });
   };
 
-render(){
+  render() {
     return (
       <div className="App">
         <header>
@@ -50,19 +43,14 @@ render(){
           <form className="main__form">
             <h2>Customize your laptop</h2>
             <Features
-            features = {this.props.features}
-            state={this.state}
+              {...this.props}
+              {...this.state}
+              updateFeature={this.updateFeature}
             />
           </form>
           <section className="main__summary">
             <h2>Your cart</h2>
-            <Summary
-              features = {this.props.features}
-              state={this.state}
-              USCurrencyFormat={this.USCurrencyFormat}
-              
-              />
-          
+            <Summary {...this.props} {...this.state} />
           </section>
         </main>
       </div>
