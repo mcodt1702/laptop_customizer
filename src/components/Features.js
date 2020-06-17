@@ -1,5 +1,6 @@
 import React from "react";
 import slugify from "slugify";
+import FeatureName from './FeatureName'
 
 const USCurrencyFormat = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -28,14 +29,12 @@ export default function Features(props) {
         </div>
       );
     });
-    return (
-      <fieldset className="feature" key={featureHash}>
-        <legend className="feature__name">
-          <h3>{feature}</h3>
-        </legend>
-        {options}
-      </fieldset>
-    );
+    return(
+        <FeatureName
+        feature={feature}
+        options={options}
+       
+        />)
   });
 
   return features;
