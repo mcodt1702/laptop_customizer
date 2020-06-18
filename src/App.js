@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import "./App.css";
 import Features from "./components/Features";
 import Summary from "./components/Summary";
+import Header from "./components/Header"
 
 class App extends Component {
   state = {
@@ -37,9 +38,7 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <header>
-          <h1>ELF Computing | Laptops</h1>
-        </header>
+       <Header/>
         <main>
           <form className="main__form">
             <h2>Customize your laptop</h2>
