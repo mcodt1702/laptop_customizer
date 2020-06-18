@@ -31,7 +31,7 @@ export default function Features(props) {
     });
     return(
         <FeatureName
-        feature={feature}
+         feature={feature}
         options={options}
        
         />)
