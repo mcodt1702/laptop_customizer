@@ -1,6 +1,7 @@
 import React from "react";
 import slugify from "slugify";
 import FeatureName from './FeatureName'
+import Item from './Item'
 
 const USCurrencyFormat = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -10,23 +11,28 @@ const USCurrencyFormat = new Intl.NumberFormat("en-US", {
 export default function Features(props) {
   let features = Object.keys(props.features).map((feature, idx) => {
     const featureHash = feature + "-" + idx;
-    const options = props.features[feature].map((item) => {
-      const itemHash = slugify(JSON.stringify(item));
+    const options = props.features[feature].map((computer) => {
+      const itemHash = slugify(JSON.stringify(computer));
+
 
       return (
-        <div key={itemHash} className="feature__item">
-          <input
-            type="radio"
-            id={itemHash}
-            className="feature__option"
-            name={slugify(feature)}
-            checked={item.name === props.selected[feature].name}
-            onChange={(e) => props.updateFeature(feature, item)}
-          />
+        
+      <div>
+          <Item 
+        itemHash = {itemHash}
+        feature = {feature}
+        computer = {computer}
+        idx = {idx}
+        selected = {props.selected}
+        updateFeature = {props.updateFeature}
+        />
+
           <label htmlFor={itemHash} className="feature__label">
-            {item.name} ({USCurrencyFormat.format(item.cost)})
+            {computer.name} ({USCurrencyFormat.format(computer.cost)})
           </label>
-        </div>
+      </div> 
+      
+        
       );
     });
     return(
